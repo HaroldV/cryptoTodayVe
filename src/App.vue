@@ -20,32 +20,7 @@
             </section>
             <section class="mdl-layout__tab-panel" id="about">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col">
-                        <img src="./assets/team/hv.jpg" width="60" class="img-responsive" height="60" alt="hv">
-                        <h4>Harold Villalobos</h4>
-                        <p class="text-muted">Full Stack Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="https://twitter.com/haroldv22_" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/in/haroldv22" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            </li>
-                            <li><a href="https://github.com/HaroldV" target="_blank"><i class="fab fa-github"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="mdl-cell mdl-cell--1-col">
-                        <img src="./assets/team/jg.jpg" width="60" height="60" alt="hv">
-                        <h4>Javier Gomez</h4>
-                        <p class="text-muted">Full Stack Developer</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="https://twitter.com/javiergomezve" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/in/javiergomezve/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            </li>
-                            <li><a href="https://github.com/javiergomezve" target="_blank"><i class="fab fa-github"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                    <developer v-for="dev in devs" :dev="dev"></developer>
                 </div>
             </section>
         </main>
@@ -55,14 +30,14 @@
 <script>
 import Current from '@/components/Current'
 import Previous from '@/components/Previous'
-import moment from 'moment'
+import Developer from "./components/Developer";
 import axios from 'axios'
-import Pusher from 'pusher-js'
 
-export default {  
-  name: 'app',  
-  components: { Current, Previous },
-  
+
+export default {
+  name: 'app',
+  components: {Developer, Current, Previous },
+
   data () {
     return {
       searchCurrency: '',
@@ -74,14 +49,30 @@ export default {
           LTC: '',
           DASH: '',
           XRP: '',
-      },            
+      },
+      devs: [
+          {
+              name: 'Harold Villalobos', img: '/team/hv.jpg', headline: 'Full Stack Developer', socialLinks: [
+                  {url: 'https://twitter.com/haroldv22_', icon: 'fab fa-twitter-square'},
+                  {url: 'https://www.linkedin.com/in/haroldv22', icon: 'fab fa-linkedin'},
+                  {url: 'https://github.com/HaroldV', icon: 'fab fa-github'},
+              ]
+          },
+          {
+              name: 'Javier Gomez', img: '/team/jg.jpg', headline: 'Full Stack Developer', socialLinks: [
+                  {url: 'https://twitter.com/javiergomezve', icon: 'fab fa-twitter-square'},
+                  {url: 'https://www.linkedin.com/in/javiergomezve', icon: 'fab fa-linkedin'},
+                  {url: 'https://github.com/javiergomezve', icon: 'fab fa-github'},
+              ]
+          }
+      ]
     }
   },
-  
-  created() {                
+
+  created() {
 
     if (! navigator.onLine) {
-      
+
       this.currentCurrency = {
         BTC: localStorage.getItem('BTC'),
         DGB: localStorage.getItem('DGB'),
@@ -90,17 +81,17 @@ export default {
         LTC: localStorage.getItem('LTC'),
         LTC: localStorage.getItem('DASH'),
         LTC: localStorage.getItem('XRP'),
-      }                    
-    
-    } else {            
+      }
+
+    } else {
       this.cryptoToday(this.currentCurrency)
     }
   },
 
-  methods: {        
-    cryptoToday: (currentCurrency) => {    
-      let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD'                  
-      axios.get(url).then(res => {                
+  methods: {
+    cryptoToday: (currentCurrency) => {
+      let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD'
+      axios.get(url).then(res => {
         localStorage.setItem('BTC', currentCurrency.BTC = res.data.BTC.USD)
         localStorage.setItem('DGB', currentCurrency.DGB = res.data.DGB.USD)
         localStorage.setItem('SC', currentCurrency.SC = res.data.SC.USD)
@@ -108,26 +99,19 @@ export default {
         localStorage.setItem('LTC', currentCurrency.LTC = res.data.LTC.USD)
         localStorage.setItem('DASH', currentCurrency.DASH = res.data.DASH.USD)
         localStorage.setItem('XRP', currentCurrency.XRP = res.data.XRP.USD)
-      })      
-    },        
+      })
+    },
   },
 }
 </script>
 
 <style scope>
-.mdl-layout__header{ background-color: #4caf50; }
-.mdl-layout__tab-bar{ background-color: #4caf50; }
+.mdl-layout__header{ background-color: #1e8600; }
+.mdl-layout__tab-bar{ background-color: #1e8600; }
 .mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
     background: #efd500;
 }
 .mdl-tabs__tab{ color: white }
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active { color: chartreuse; }
 ul, ol{ list-style-type: none; }
-
-.img-responsive {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 5px;
-}
 </style>
