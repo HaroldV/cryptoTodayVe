@@ -1,54 +1,55 @@
 <template>
-  <div>      
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <!-- Header -->
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">CryptoTodayVE</span>
-        </div>          
-      </header>
-      <!-- Tabs -->
-      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div class="mdl-tabs__tab-bar">
-            <a href="#ranking" class="mdl-tabs__tab is-active"><i class="fas fa-star"></i></a>
-            <a href="#about" class="mdl-tabs__tab"><i class="fas fa-user"></i></a>
-        </div>
-        <div class="mdl-tabs__panel is-active" id="ranking">        
-          <current :currentCurrency="currentCurrency"></current>
-        </div>       
-        <div class="mdl-tabs__panel center-items" id="about">   
-          <div class="mdl-grid ">
-            <div class="mdl-cell mdl-cell--6-col">
-              <img src="./assets/team/hv.jpg" width="60" class="img-responsive" height="60" alt="hv">            
-              <h4>Harold Villalobos</h4>
-              <p class="text-muted">Full Stack Developer</p>
-              <ul class="list-inline social-buttons">
-                  <li><a href="https://twitter.com/haroldv22_" target="_blank"><i class="fab fa-twitter-square"></i></a>                                         
-                  </li>
-                  <li><a href="https://www.linkedin.com/in/haroldv22" target="_blank"><i class="fab fa-linkedin"></i></a>
-                  </li>
-                  <li><a href="https://github.com/HaroldV" target="_blank"><i class="fab fa-github"></i></a>
-                  </li>
-              </ul>
-            </div>       
-            <div class="mdl-cell mdl-cell--1-col">
-                <img src="./assets/team/jg.jpg" width="60" height="60" alt="hv">
-                <h4>Javier Gomez</h4>
-                <p class="text-muted">Full Stack Developer</p>
-                <ul class="list-inline social-buttons">
-                    <li><a href="https://twitter.com/javiergomezve" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                    </li>                            
-                    <li><a href="https://www.linkedin.com/in/javiergomezve/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </li>
-                    <li><a href="https://github.com/javiergomezve" target="_blank"><i class="fab fa-github"></i></a>
-                    </li>
-                </ul>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">CryptoTodayVE</span>
             </div>
-          </div>
-        </div>       
-      </div>      
+
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#currencies" class="mdl-layout__tab is-active">
+                    <i class="fas fa-star fa-2x"></i>
+                </a>
+                <a href="#about" class="mdl-layout__tab">
+                    <i class="fas fa-user fa-2x"></i>
+                </a>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="currencies">
+                <current :currentCurrency="currentCurrency"></current>
+            </section>
+            <section class="mdl-layout__tab-panel" id="about">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <img src="./assets/team/hv.jpg" width="60" class="img-responsive" height="60" alt="hv">
+                        <h4>Harold Villalobos</h4>
+                        <p class="text-muted">Full Stack Developer</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/haroldv22_" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/in/haroldv22" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                            <li><a href="https://github.com/HaroldV" target="_blank"><i class="fab fa-github"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mdl-cell mdl-cell--1-col">
+                        <img src="./assets/team/jg.jpg" width="60" height="60" alt="hv">
+                        <h4>Javier Gomez</h4>
+                        <p class="text-muted">Full Stack Developer</p>
+                        <ul class="list-inline social-buttons">
+                            <li><a href="https://twitter.com/javiergomezve" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                            </li>
+                            <li><a href="https://www.linkedin.com/in/javiergomezve/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                            <li><a href="https://github.com/javiergomezve" target="_blank"><i class="fab fa-github"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
-  </div>
 </template>
 
 <script>
@@ -115,9 +116,18 @@ export default {
 
 <style scope>
 .mdl-layout__header{ background-color: #4caf50; }
-.mdl-tabs__tab-bar{ background-color: #4caf50; }
+.mdl-layout__tab-bar{ background-color: #4caf50; }
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
+    background: #efd500;
+}
 .mdl-tabs__tab{ color: white }
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active { color: chartreuse; }
 ul, ol{ list-style-type: none; }
 
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 5px;
+}
 </style>
