@@ -52,14 +52,14 @@ export default {
       },
       devs: [
           {
-              name: 'Harold Villalobos', img: '/team/hv.jpg', headline: 'Full Stack Developer', socialLinks: [
+              name: 'Harold Villalobos', img: '/static/team/hv.jpg', headline: 'Full Stack Developer', socialLinks: [
                   {url: 'https://twitter.com/haroldv22_', icon: 'fab fa-twitter-square'},
                   {url: 'https://www.linkedin.com/in/haroldv22', icon: 'fab fa-linkedin'},
                   {url: 'https://github.com/HaroldV', icon: 'fab fa-github'},
               ]
           },
           {
-              name: 'Javier Gomez', img: '/team/jg.jpg', headline: 'Full Stack Developer', socialLinks: [
+              name: 'Javier Gomez', img: '/static/team/jg.jpg', headline: 'Full Stack Developer', socialLinks: [
                   {url: 'https://twitter.com/javiergomezve', icon: 'fab fa-twitter-square'},
                   {url: 'https://www.linkedin.com/in/javiergomezve', icon: 'fab fa-linkedin'},
                   {url: 'https://github.com/javiergomezve', icon: 'fab fa-github'},

@@ -35,7 +35,9 @@
     }
     .demo-card-square > .mdl-card__title {
         color: #efd500;
-        background: bottom right 15% no-repeat #1e8600;
+        font-weight: bold;
+        background: top left no-repeat #1e8600;
+        height: 400px;
     }
     .demo-card-square > .mdl-button  {
         display: inline-block;
