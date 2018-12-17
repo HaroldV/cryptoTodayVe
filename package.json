@@ -1,9 +1,9 @@
 {
   "name": "cryptoTodayVE",
   "version": "1.0.0",
-  "description": "PWA Informativa sobre las criptomonedas que mas se utilizan en Venezuela",  
+  "description": "PWA Informativa sobre las criptomonedas que mas se utilizan en Venezuela",
   "authors": [
-    {    
+    {
       "name": "Harold Villalobos",
       "email": "haroldestebanvillalobos@gmail.com",
       "github": "https://github.com/HaroldV"
