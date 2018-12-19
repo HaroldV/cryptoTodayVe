@@ -14,10 +14,12 @@
                 </a>
             </div>
         </header>
+
         <main class="mdl-layout__content">
             <section class="mdl-layout__tab-panel is-active" id="currencies">
-                <crypto-currency-list :currentCurrency="currentCurrency"></crypto-currency-list>
+                <crypto-currency-list :loading="loading" :currencies="currencies"></crypto-currency-list>
             </section>
+
             <section class="mdl-layout__tab-panel" id="about">
                 <div class="mdl-grid">
                     <developer v-for="dev in devs" :dev="dev" :key="dev.name"></developer>
@@ -35,20 +37,62 @@
 
   export default {
     name: 'app',
-    components: {Developer, CryptoCurrencyList, Previous },
+    components: { Developer, CryptoCurrencyList, Previous },
 
     data () {
       return {
-        searchCurrency: '',
-        currentCurrency: {
-          BTC: '',
-          DGB: '',
-          SC: '',
-          ETH: '',
-          LTC: '',
-          DASH: '',
-          XRP: '',
-        },
+        loading: true,
+        currencies: [
+          {
+            id: 'BTC',
+            img: '/static/currencies/bitcoin-icon.png',
+            name: 'Bitcoin',
+            usd: 0,
+            bss: 0
+          },
+          {
+            id: 'ETH',
+            img: '/static/currencies/eth-icon.png',
+            name: 'Ethereum',
+            usd: 0,
+            bss: 0
+          },
+          {
+            id: 'XRP',
+            img: '/static/currencies/xrp-icon.png',
+            name: 'Ripple',
+            usd: 0,
+            bss: 0
+          },
+          {
+            id: 'LTC',
+            img: '/static/currencies/litecoin-icon.png',
+            name: 'Litecoin',
+            usd: 0,
+            bss: 0
+          },
+          {
+            id: 'DASH',
+            img: '/static/currencies/dash-icon.png',
+            name: 'Dash',
+            usd: 0,
+            bss: 0
+          },
+          {
+            id: 'DGB',
+            img: '/static/currencies/Digibyte.png',
+            name: 'Digibyte',
+            usd: 0,
+            bss: 0
+          },
+          {
+            id: 'SC',
+            img: '/static/currencies/siacoin-icon.png',
+            name: 'Siacoin',
+            usd: 0,
+            bss: 0
+          },
+        ],
         devs: [
           {
             name: 'Harold Villalobos', img: '/static/team/hv.jpg', headline: 'Full Stack Developer', socialLinks: [
@@ -69,39 +113,33 @@
     },
 
     created() {
-
-      if (! navigator.onLine) {
-
-        this.currentCurrency = {
-          BTC: localStorage.getItem('BTC'),
-          DGB: localStorage.getItem('DGB'),
-          SC: localStorage.getItem('SC'),
-          ETH: localStorage.getItem('ETH'),
-          LTC: localStorage.getItem('LTC'),
-          DASH: localStorage.getItem('DASH'),
-          XRP: localStorage.getItem('XRP'),
-        }
-
-      } else {
-        this.cryptoToday(this.currentCurrency)
-      }
+      axios.all([
+        getCryptoCurrenciesValues(),
+        getDollarValue()
+      ])
+        .then(axios.spread((cryptos, dollar) => {
+          this.setData({currencies: cryptos.data, dollar: dollar.data})
+        }))
     },
 
     methods: {
-      cryptoToday: (currentCurrency) => {
-        let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD'
-        axios.get(url).then(res => {
-          localStorage.setItem('BTC', currentCurrency.BTC = res.data.BTC.USD)
-          localStorage.setItem('DGB', currentCurrency.DGB = res.data.DGB.USD)
-          localStorage.setItem('SC', currentCurrency.SC = res.data.SC.USD)
-          localStorage.setItem('ETH', currentCurrency.ETH = res.data.ETH.USD)
-          localStorage.setItem('LTC', currentCurrency.LTC = res.data.LTC.USD)
-          localStorage.setItem('DASH', currentCurrency.DASH = res.data.DASH.USD)
-          localStorage.setItem('XRP', currentCurrency.XRP = res.data.XRP.USD)
+      setData(data) {
+        this.currencies.map((currency) => {
+          try {
+            currency.usd = data.currencies[currency.id].USD
+            currency.bss = currency.usd * data.dollar.USD.transferencia
+          } catch (e) {
+            console.error('La moneda ${currency.id} no pudo ser encontrada');
+          }
         })
-      },
+
+        this.loading = false
+      }
     },
   }
+
+  const getCryptoCurrenciesValues = () => axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD')
+  const getDollarValue = () => axios.get('https://s3.amazonaws.com/dolartoday/data.json')
 </script>
 
 <style scoped>

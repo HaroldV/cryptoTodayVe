@@ -1,14 +1,14 @@
 <template>
     <div class="mdl-list__item mdl-shadow--2dp">
         <span class="mdl-list__item-primary-content">
-            <img v-bind:src="img" width="50" v-bind:alt="name">
+            <img v-bind:src="currency.img" width="50" v-bind:alt="currency.name">
         </span>
 
         <div class="mdl-list__item-secondary-action">
             <ul>
-                <li class="title">1 {{diminutive}}</li>
-                <li class="amount">$ {{usd}}</li>
-                <li class="amount">BsS {{bss}}</li>
+                <li class="title">1 {{currency.id}}</li>
+                <li class="amount">$ {{currency.usd}}</li>
+                <li class="amount">BsS {{currency.bss | formatPrice}}</li>
             </ul>
         </div>
     </div>
@@ -18,11 +18,7 @@
   export default {
     name: 'CryptoCurrency',
     props: {
-      name: { type: String },
-      img: { type: String },
-      diminutive: { type: String },
-      usd: { type: Number },
-      bss: { type: String }
+      currency: { type: Object }
     }
   }
 </script>
@@ -35,6 +31,10 @@
 
   .mdl-list__item-secondary-action {
     text-align: right;
+  }
+
+  .mdl-list__item-secondary-action li {
+      list-style: none;
   }
 
   .amount{
