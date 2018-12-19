@@ -45,49 +45,49 @@
         currencies: [
           {
             id: 'BTC',
-            img: '/static/currencies/bitcoin-icon.png',
+            img: '/static/currencies/bitcoin.svg',
             name: 'Bitcoin',
             usd: 0,
             bss: 0
           },
           {
             id: 'ETH',
-            img: '/static/currencies/eth-icon.png',
+            img: '/static/currencies/ethereum.svg',
             name: 'Ethereum',
             usd: 0,
             bss: 0
           },
           {
             id: 'XRP',
-            img: '/static/currencies/xrp-icon.png',
+            img: '/static/currencies/ripple.svg',
             name: 'Ripple',
             usd: 0,
             bss: 0
           },
           {
             id: 'LTC',
-            img: '/static/currencies/litecoin-icon.png',
+            img: '/static/currencies/litecoin.svg',
             name: 'Litecoin',
             usd: 0,
             bss: 0
           },
           {
             id: 'DASH',
-            img: '/static/currencies/dash-icon.png',
+            img: '/static/currencies/dash.svg',
             name: 'Dash',
             usd: 0,
             bss: 0
           },
           {
             id: 'DGB',
-            img: '/static/currencies/Digibyte.png',
+            img: '/static/currencies/digibyte.svg',
             name: 'Digibyte',
             usd: 0,
             bss: 0
           },
           {
             id: 'SC',
-            img: '/static/currencies/siacoin-icon.png',
+            img: '/static/currencies/siacoin.svg',
             name: 'Siacoin',
             usd: 0,
             bss: 0
