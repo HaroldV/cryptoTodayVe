@@ -53,13 +53,14 @@
 </template>
 
 <script>
-import axios from 'axios'
-import CryptoCurrency from "./CryptoCurrency";
+  import axios from 'axios'
+  import CryptoCurrency from "./CryptoCurrency";
 
-export default {
-  name: 'app',
+  export default {
+    name: 'CryptoCurrencyList',
     components: { CryptoCurrency },
     props: {
+<<<<<<< HEAD
     currentCurrency: {  type: Object  }
   },
   data () {
@@ -85,11 +86,45 @@ export default {
           this.bssToDgb = this.currentCurrency.DGB * res.data.USD.transferencia
           this.bssToSc = this.currentCurrency.SC * res.data.USD.transferencia
         }).catch(error => console.log(error))
+=======
+      currentCurrency: {  type: Object  }
+>>>>>>> 28ce0f7c3857270218ce546573e13bc54ae3954c
     },
-    formatPrice(value) {
+    data () {
+      return {
+        bssToBtc: 0,
+        bssToEth: 0,
+        bssToXrp: 0,
+        bssToLtc: 0,
+        bssToDash: 0,
+        bssToDgb: 0,
+        bssToSc: 0,
+      }
+    },
+    methods: {
+      getAmountBsByCrypto() {
+        return axios.get('https://s3.amazonaws.com/dolartoday/data.json')
+          .then(res => {
+            this.bssToBtc = this.currentCurrency.BTC * res.data.USD.transferencia
+            this.bssToEth = this.currentCurrency.ETH * res.data.USD.transferencia
+            this.bssToXrp = this.currentCurrency.XRP * res.data.USD.transferencia
+            this.bssToLtc = this.currentCurrency.LTC * res.data.USD.transferencia
+            this.bssToDash = this.currentCurrency.DASH * res.data.USD.transferencia
+            this.bssToDgb = this.currentCurrency.DGB * res.data.USD.transferencia
+            this.bssToSc = this.currentCurrency.SC * res.data.USD.transferencia
+          }).catch(error => console.log(error))
+      },
+      formatPrice(value) {
         let val = (value/1).toFixed(2).replace('.', ',')
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+<<<<<<< HEAD
     }
   },
 }
 </script>
+=======
+      }
+    },
+  }
+</script>
+>>>>>>> 28ce0f7c3857270218ce546573e13bc54ae3954c

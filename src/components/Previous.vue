@@ -55,26 +55,28 @@
 </template>
 
 <script>
-export default {
-  name: 'app',
-  props: {
-    previousCurrency: { type: Object }
-  },
-  data () { return {} }
-}
+  export default {
+    name: 'Previous',
+    props: {
+      previousCurrency: { type: Object }
+    },
+    data () { return {} }
+  }
 </script>
 
 <style scoped>
-#first, #second, #third, #fourth, #fifth {
-      border: 1px solid #F5CE00;
-      padding: 2em 0em;
-      max-width: 90%;
-      margin: 5px auto;
-}
-#first p, #second p, #third p, #fourth p, #fifth p {
-  display: inline-block;
-  padding: 0em 1.5em;
-  font-size: 1.5rem;
-}
-h2 { font-size: 1.5em; }
+  #first, #second, #third, #fourth, #fifth {
+    border: 1px solid #F5CE00;
+    padding: 2em 0;
+    max-width: 90%;
+    margin: 5px auto;
+  }
+
+  #first p, #second p, #third p, #fourth p, #fifth p {
+    display: inline-block;
+    padding: 0 1.5em;
+    font-size: 1.5rem;
+  }
+
+  h2 { font-size: 1.5em; }
 </style>

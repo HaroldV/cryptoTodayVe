@@ -19,34 +19,37 @@
 </template>
 
 <script>
-    export default {
-        name: "Developer",
-        props: {
-            dev: {  type: Object  }
-        }
+  export default {
+    name: "Developer",
+    props: {
+      dev: { type: Object }
     }
+  }
 </script>
 
 <style scoped>
-    demo-card-square.mdl-card {
-        width: 320px;
-        height: 320px;
-    }
-    .demo-card-square > .mdl-card__title {
-        color: #efd500;
-        font-weight: bold;
-        background: top left no-repeat #1e8600;
-        height: 400px;
-    }
-    .demo-card-square > .mdl-button  {
-        display: inline-block;
-    }
-    
-    .fab {
-        color: #1e8600;
-        font-size: 20px;
-    }
-    .demo-card-square > .mdl-card__title{
-            background-repeat: round;
-    }
+  .demo-card-square.mdl-card {
+    width: 320px;
+    height: 320px;
+  }
+
+  .demo-card-square > .mdl-card__title {
+    color: #efd500;
+    font-weight: bold;
+    background: top left no-repeat #1e8600;
+    height: 400px;
+  }
+
+  .demo-card-square > .mdl-button {
+    display: inline-block;
+  }
+
+  .fab {
+    color: #1e8600;
+    font-size: 20px;
+  }
+
+  .demo-card-square > .mdl-card__title {
+    background-repeat: round;
+  }
 </style>
