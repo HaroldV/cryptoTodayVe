@@ -15,28 +15,29 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            name: { type: String },
-            img: { type: String },
-            diminutive: { type: String },
-            usd: { type: Number },
-            bss: { type: String }
-        }
+  export default {
+    name: 'CryptoCurrency',
+    props: {
+      name: { type: String },
+      img: { type: String },
+      diminutive: { type: String },
+      usd: { type: Number },
+      bss: { type: String }
     }
+  }
 </script>
 
 <style scoped>
-    .mdl-list__item {
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+  .mdl-list__item {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
-    .mdl-list__item-secondary-action {
-        text-align: right;
-    }
+  .mdl-list__item-secondary-action {
+    text-align: right;
+  }
 
-    .amount{
-        font-weight: bold;
-    }
+  .amount{
+    font-weight: bold;
+  }
 </style>
