@@ -1,103 +1,69 @@
-<template>  
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">      
-      <tbody>
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/bitcoin-icon.png" width="60" height="60" alt="bitcoin">
-          </td>
-          <td>
-            <ul>
-              <li class="title">1 BTC</li>
-              <li class="amount">$ {{currentCurrency.BTC}}</li>
-              <li class="amount"> BsS {{ getAmountBsByCrypto() && formatPrice(bssToBtc) }} </li>
-            </ul>
-          </td>
-        </tr>
-        <tr> 
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/eth-icon.png" width="52" height="60" alt="ethereum">
-          </td>
-          <td>
-             <ul>
-              <li class="title">1 ETH</li>
-              <li class="amount">$ {{currentCurrency.ETH}}</li>
-              <li class="amount"> BsS {{ getAmountBsByCrypto() && formatPrice(bssToEth) }} </li>
-            </ul>            
-          </td>
-        </tr>        
-        <tr> 
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/xrp-icon.png" width="50" height="50" alt="">
-          </td>
-          <td>
-            <ul>
-              <li class="title">1 XRP</li>
-              <li class="amount">$ {{currentCurrency.XRP}}</li>
-              <li class="amount"> BsS {{ getAmountBsByCrypto() && formatPrice(bssToXrp) }} </li>
-            </ul>
-          </td>
-        </tr>        
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/litecoin-icon.png" width="50" height="50" alt="">
-          </td>
-          <td>
-            <ul>
-              <li class="title">1 LTC</li>
-              <li class="amount">$ {{currentCurrency.LTC}}</li>
-              <li class="amount"> BsS {{ getAmountBsByCrypto() && formatPrice(bssToLtc) }} </li>
-            </ul>            
-          </td>
-        </tr>        
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/dash-icon.png" width="50" height="50" alt="">
-          </td>
-          <td>
-            <ul>
-              <li class="title">1 DASH</li>
-              <li class="amount">$ {{currentCurrency.DASH}}</li>
-              <li class="amount"> BsS {{ getAmountBsByCrypto() && formatPrice(bssToDash) }} </li>
-            </ul>            
-          </td>
-        </tr>        
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/Digibyte.png" width="50" height="50" alt="">
-          </td>
-          <td>
-            <ul>
-              <li class="title">1 DGB</li>
-              <li class="amount">$ {{currentCurrency.DGB}}</li>
-              <li class="amount">BsS {{ getAmountBsByCrypto() && formatPrice(bssToDgb) }} </li>
-            </ul>              
-          </td>
-        </tr>        
-        <tr>
-          <td class="mdl-data-table__cell--non-numeric">
-            <img src="../assets/siacoin-icon.png" width="50" height="50" alt="">
-          </td>
-          <td>
-             <ul>
-              <li class="title">1 SC</li>
-              <li class="amount">$ {{currentCurrency.SC}}</li>
-              <li class="amount">BsS {{ getAmountBsByCrypto() && formatPrice(bssToSc) }} </li>
-            </ul>                            
-          </td>
-        </tr>               
-      </tbody>
-    </table>    
+<template>
+    <div class="demo-list-action mdl-list">
+        <crypto-currency
+                :img="`/static/currencies/bitcoin-icon.png`"
+                :name="`Bitcoin`"
+                :diminutive="`BTC`"
+                :usd="currentCurrency.BTC"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToBtc)"
+        ></crypto-currency>
+        <crypto-currency
+                :img="`/static/currencies/eth-icon.png`"
+                :name="`Ethereum`"
+                :diminutive="`ETH`"
+                :usd="currentCurrency.ETH"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToEth)"
+        ></crypto-currency>
+        <crypto-currency
+                :img="`/static/currencies/xrp-icon.png`"
+                :name="`Ripple`"
+                :diminutive="`XRP`"
+                :usd="currentCurrency.XRP"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToXrp)"
+        ></crypto-currency>
+        <crypto-currency
+                :img="`/static/currencies/litecoin-icon.png`"
+                :name="`Litecoin`"
+                :diminutive="`LTC`"
+                :usd="currentCurrency.LTC"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToLtc)"
+        ></crypto-currency>
+        <crypto-currency
+                :img="`/static/currencies/dash-icon.png`"
+                :name="`Dash`"
+                :diminutive="`DASH`"
+                :usd="currentCurrency.DASH"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToDash)"
+        ></crypto-currency>
+        <crypto-currency
+                :img="`/static/currencies/Digibyte.png`"
+                :name="`Digibyte`"
+                :diminutive="`DGB`"
+                :usd="currentCurrency.DGB"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToDgb)"
+        ></crypto-currency>
+        <crypto-currency
+                :img="`/static/currencies/siacoin-icon.png`"
+                :name="`Siacoin`"
+                :diminutive="`SC`"
+                :usd="currentCurrency.SC"
+                :bss="getAmountBsByCrypto() && formatPrice(bssToSc)"
+        ></crypto-currency>
+    </div>
 </template>
 
 <script>
 import axios from 'axios'
+import CryptoCurrency from "./CryptoCurrency";
+
 export default {
   name: 'app',
-  props: {
+    components: { CryptoCurrency },
+    props: {
     currentCurrency: {  type: Object  }    
   },
   data () {
-    return {      
+    return {
       bssToBtc: 0,
       bssToEth: 0,
       bssToXrp: 0,
@@ -128,13 +94,6 @@ export default {
 }
 </script>
 
-<style scope>
-.mdl-shadow--2dp{
-  width: 100%;
-}
-.amount{
-  font-size: 18px;
-  font-weight: bold;
-}
-</style>
+<style scoped>
 
+</style>
