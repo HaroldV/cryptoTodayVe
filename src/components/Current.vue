@@ -5,7 +5,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/bitcoin-icon.png" width="60" height="60" alt="bitcoin">
           </td>
-          <td></td>
           <td>
             <ul>
               <li class="title">1 BTC</li>
@@ -18,7 +17,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/eth-icon.png" width="52" height="60" alt="ethereum">
           </td>
-          <td></td>
           <td>
              <ul>
               <li class="title">1 ETH</li>
@@ -31,7 +29,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/xrp-icon.png" width="50" height="50" alt="">
           </td>
-          <td></td>
           <td>
             <ul>
               <li class="title">1 XRP</li>
@@ -44,7 +41,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/litecoin-icon.png" width="50" height="50" alt="">
           </td>
-          <td></td>
           <td>
             <ul>
               <li class="title">1 LTC</li>
@@ -57,7 +53,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/dash-icon.png" width="50" height="50" alt="">
           </td>
-          <td></td>
           <td>
             <ul>
               <li class="title">1 DASH</li>
@@ -70,7 +65,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/Digibyte.png" width="50" height="50" alt="">
           </td>
-          <td></td>
           <td>
             <ul>
               <li class="title">1 DGB</li>
@@ -83,7 +77,6 @@
           <td class="mdl-data-table__cell--non-numeric">
             <img src="../assets/siacoin-icon.png" width="50" height="50" alt="">
           </td>
-          <td></td>
           <td>
              <ul>
               <li class="title">1 SC</li>
