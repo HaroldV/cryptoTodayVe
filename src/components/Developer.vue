@@ -47,4 +47,7 @@
         color: #1e8600;
         font-size: 20px;
     }
+    .demo-card-square > .mdl-card__title{
+            background-repeat: round;
+    }
 </style>
