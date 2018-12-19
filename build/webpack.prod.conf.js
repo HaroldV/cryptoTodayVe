@@ -100,9 +100,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
     // service worker caching
     new SWPrecacheWebpackPlugin({
-      cacheId: 'krypto-watcher',
-      filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
+      cacheId: 'crypto-today-ve',
+      filename: 'service-worker.js',      
       minify: true,
       stripPrefix: 'dist/'
     })

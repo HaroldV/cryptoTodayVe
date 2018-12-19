@@ -60,7 +60,7 @@ export default {
   name: 'app',
     components: { CryptoCurrency },
     props: {
-    currentCurrency: {  type: Object  }    
+    currentCurrency: {  type: Object  }
   },
   data () {
     return {
@@ -83,7 +83,7 @@ export default {
           this.bssToLtc = this.currentCurrency.LTC * res.data.USD.transferencia
           this.bssToDash = this.currentCurrency.DASH * res.data.USD.transferencia
           this.bssToDgb = this.currentCurrency.DGB * res.data.USD.transferencia
-          this.bssToSc = this.currentCurrency.SC * res.data.USD.transferencia                                  
+          this.bssToSc = this.currentCurrency.SC * res.data.USD.transferencia
         }).catch(error => console.log(error))
     },
     formatPrice(value) {
@@ -93,7 +93,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>
