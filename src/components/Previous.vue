@@ -10,7 +10,7 @@
       <p><label> 1 LTC:</label> {{ previousCurrency.fiveDays.LTC }} </p>
       <p><label> 1 DASH:</label> {{ previousCurrency.fiveDays.DASH }} </p>
       <p><label> 1 XRP:</label> {{ previousCurrency.fiveDays.XRP }} </p>
-    </div>    
+    </div>
     <div id="second">
       <h2>Date: {{ previousCurrency.twoDays.DATE }}</h2>
       <p><label> 1 BTC:</label> {{ previousCurrency.twoDays.BTC }} </p>
@@ -20,7 +20,7 @@
       <p><label> 1 LTC:</label> {{ previousCurrency.fiveDays.LTC }} </p>
       <p><label> 1 DASH:</label> {{ previousCurrency.fiveDays.DASH }} </p>
       <p><label> 1 XRP:</label> {{ previousCurrency.fiveDays.XRP }} </p>
-    </div>    
+    </div>
     <div id="third">
       <h2>Date: {{ previousCurrency.threeDays.DATE }}</h2>
       <p><label> 1 BTC:</label> {{ previousCurrency.threeDays.BTC }} </p>
@@ -30,7 +30,7 @@
       <p><label> 1 LTC:</label> {{ previousCurrency.fiveDays.LTC }} </p>
       <p><label> 1 DASH:</label> {{ previousCurrency.fiveDays.DASH }} </p>
       <p><label> 1 XRP:</label> {{ previousCurrency.fiveDays.XRP }} </p>
-    </div>    
+    </div>
     <div id="fourth">
       <h2>Date: {{ previousCurrency.fourDays.DATE }}</h2>
       <p><label> 1 BTC:</label> {{ previousCurrency.fourDays.BTC }} </p>
@@ -40,7 +40,7 @@
       <p><label> 1 LTC:</label> {{ previousCurrency.fiveDays.LTC }} </p>
       <p><label> 1 DASH:</label> {{ previousCurrency.fiveDays.DASH }} </p>
       <p><label> 1 XRP:</label> {{ previousCurrency.fiveDays.XRP }} </p>
-    </div>    
+    </div>
     <div id="fifth">
       <h2>Date: {{ previousCurrency.fiveDays.DATE }}</h2>
       <p><label> 1 BTC:</label> {{ previousCurrency.fiveDays.BTC }} </p>
@@ -50,7 +50,7 @@
       <p><label> 1 LTC:</label> {{ previousCurrency.fiveDays.LTC }} </p>
       <p><label> 1 DASH:</label> {{ previousCurrency.fiveDays.DASH }} </p>
       <p><label> 1 XRP:</label> {{ previousCurrency.fiveDays.XRP }} </p>
-    </div>        
+    </div>
   </div>
 </template>
 
@@ -77,8 +77,4 @@ export default {
   font-size: 1.5rem;
 }
 h2 { font-size: 1.5em; }
-
 </style>
-
-
-
