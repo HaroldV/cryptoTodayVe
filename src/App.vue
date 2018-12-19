@@ -16,7 +16,7 @@
         </header>
         <main class="mdl-layout__content">
             <section class="mdl-layout__tab-panel is-active" id="currencies">
-                <current :currentCurrency="currentCurrency"></current>
+                <crypto-currency-list :currentCurrency="currentCurrency"></crypto-currency-list>
             </section>
             <section class="mdl-layout__tab-panel" id="about">
                 <div class="mdl-grid">
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Current from '@/components/Current'
+import CryptoCurrencyList from '@/components/CryptoCurrencyList'
 import Previous from '@/components/Previous'
 import Developer from "./components/Developer";
 import axios from 'axios'
@@ -36,7 +36,7 @@ import axios from 'axios'
 
 export default {
   name: 'app',
-  components: {Developer, Current, Previous },
+  components: {Developer, CryptoCurrencyList, Previous },
 
   data () {
     return {
@@ -79,15 +79,15 @@ export default {
         SC: localStorage.getItem('SC'),
         ETH: localStorage.getItem('ETH'),
         LTC: localStorage.getItem('LTC'),
-        LTC: localStorage.getItem('DASH'),
-        LTC: localStorage.getItem('XRP'),
+        DASH: localStorage.getItem('DASH'),
+        XRP: localStorage.getItem('XRP'),
       }
 
     } else {
       this.cryptoToday(this.currentCurrency)
     }
   },
-
+  
   methods: {
     cryptoToday: (currentCurrency) => {
       let url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD'
