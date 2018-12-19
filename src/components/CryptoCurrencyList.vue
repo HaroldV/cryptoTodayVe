@@ -60,7 +60,6 @@
     name: 'CryptoCurrencyList',
     components: { CryptoCurrency },
     props: {
-<<<<<<< HEAD
     currentCurrency: {  type: Object  }
   },
   data () {
@@ -86,9 +85,6 @@
           this.bssToDgb = this.currentCurrency.DGB * res.data.USD.transferencia
           this.bssToSc = this.currentCurrency.SC * res.data.USD.transferencia
         }).catch(error => console.log(error))
-=======
-      currentCurrency: {  type: Object  }
->>>>>>> 28ce0f7c3857270218ce546573e13bc54ae3954c
     },
     data () {
       return {
