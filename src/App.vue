@@ -143,6 +143,11 @@
 </script>
 
 <style scoped>
+  body {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
   .mdl-layout__header{ background-color: #1e8600; }
 
   .mdl-layout__tab-bar{ background-color: #1e8600; }
