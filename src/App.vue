@@ -113,13 +113,19 @@
     },
 
     created() {
-      axios.all([
+      const refreshData = () => axios.all([
         getCryptoCurrenciesValues(),
         getDollarValue()
       ])
         .then(axios.spread((cryptos, dollar) => {
           this.setData({currencies: cryptos.data, dollar: dollar.data})
         }))
+      
+      refreshData()
+      
+      setInterval(() => {
+        refreshData()
+      }, 180000)
     },
 
     methods: {
@@ -140,6 +146,7 @@
 
   const getCryptoCurrenciesValues = () => axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD')
   const getDollarValue = () => axios.get('https://s3.amazonaws.com/dolartoday/data.json')
+  
 </script>
 
 <style scoped>
