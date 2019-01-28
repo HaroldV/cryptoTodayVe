@@ -15,6 +15,12 @@
         <main class="mdl-layout__content">
             <section class="mdl-layout__tab-panel is-active" id="currencies">
                 <crypto-currency-list :loading="loading" :currencies="currencies"></crypto-currency-list>
+
+                <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar mdl-snackbar--active" v-if="showError">
+                    <div class="mdl-snackbar__text">
+                        Ocurrió un error consultando los datos
+                    </div>
+                </div>
             </section>
         </main>
     </div>
@@ -23,104 +29,32 @@
 <script>
   import CryptoCurrencyList from '@/components/CryptoCurrencyList'
   import Previous from '@/components/Previous'
-  import Developer from "./components/Developer";
   import axios from 'axios'
 
   export default {
     name: 'app',
-    components: { Developer, CryptoCurrencyList, Previous },
+    components: { CryptoCurrencyList, Previous },
 
     data () {
       return {
+        showError: false,
         loading: true,
-        currencies: [
-          {
-            id: 'BTC',
-            img: '/static/currencies/bitcoin.svg',
-            name: 'Bitcoin',
-            usd: 0,
-            bss: 0
-          },
-          {
-            id: 'ETH',
-            img: '/static/currencies/ethereum.svg',
-            name: 'Ethereum',
-            usd: 0,
-            bss: 0
-          },
-          {
-            id: 'XRP',
-            img: '/static/currencies/ripple.svg',
-            name: 'Ripple',
-            usd: 0,
-            bss: 0
-          },
-          {
-            id: 'LTC',
-            img: '/static/currencies/litecoin.svg',
-            name: 'Litecoin',
-            usd: 0,
-            bss: 0
-          },
-          {
-            id: 'DASH',
-            img: '/static/currencies/dash.svg',
-            name: 'Dash',
-            usd: 0,
-            bss: 0
-          },
-          {
-            id: 'DGB',
-            img: '/static/currencies/digibyte.svg',
-            name: 'Digibyte',
-            usd: 0,
-            bss: 0
-          },
-          {
-            id: 'SC',
-            img: '/static/currencies/siacoin.svg',
-            name: 'Siacoin',
-            usd: 0,
-            bss: 0
-          },
-        ]
+        currencies: []
       }
     },
 
     created() {
-      const refreshData = () => axios.all([
-        getCryptoCurrenciesValues(),
-        getDollarValue()
-      ])
-        .then(axios.spread((cryptos, dollar) => {
-          this.setData({currencies: cryptos.data, dollar: dollar.data})
-        }))
-
-      refreshData()
-
-      setInterval(() => {
-        refreshData()
-      }, 180000)
-    },
-
-    methods: {
-      setData(data) {
-        this.currencies.map((currency) => {
-          try {
-            currency.usd = data.currencies[currency.id].USD
-            currency.bss = currency.usd * data.dollar.USD.transferencia
-          } catch (e) {
-            console.error('La moneda ${currency.id} no pudo ser encontrada');
-          }
+      axios.get('https://cryptotodayve.herokuapp.com/api/cryptos')
+        .then(cryptos => {
+          this.currencies = cryptos.data;
+          this.loading = false;
         })
-
-        this.loading = false
-      }
+        .catch(err => {
+          this.loading = false;
+          this.showError = true;
+        });
     },
   }
-
-  const getCryptoCurrenciesValues = () => axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD')
-  const getDollarValue = () => axios.get('https://s3.amazonaws.com/dolartoday/data.json')
 
 </script>
 
