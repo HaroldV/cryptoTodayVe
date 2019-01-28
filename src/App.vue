@@ -9,21 +9,12 @@
                 <a href="#currencies" class="mdl-layout__tab is-active">
                     <i class="fas fa-star fa-2x"></i>
                 </a>
-                <a href="#about" class="mdl-layout__tab">
-                    <i class="fas fa-user fa-2x"></i>
-                </a>
             </div>
         </header>
 
         <main class="mdl-layout__content">
             <section class="mdl-layout__tab-panel is-active" id="currencies">
                 <crypto-currency-list :loading="loading" :currencies="currencies"></crypto-currency-list>
-            </section>
-
-            <section class="mdl-layout__tab-panel" id="about">
-                <div class="mdl-grid">
-                    <developer v-for="dev in devs" :dev="dev" :key="dev.name"></developer>
-                </div>
             </section>
         </main>
     </div>
@@ -92,22 +83,6 @@
             usd: 0,
             bss: 0
           },
-        ],
-        devs: [
-          {
-            name: 'Harold Villalobos', img: '/static/team/hv.jpg', headline: 'Full Stack Developer', socialLinks: [
-              {url: 'https://twitter.com/haroldv22_', icon: 'fab fa-twitter-square'},
-              {url: 'https://www.linkedin.com/in/haroldv22', icon: 'fab fa-linkedin'},
-              {url: 'https://github.com/HaroldV', icon: 'fab fa-github'},
-            ]
-          },
-          {
-            name: 'Javier Gomez', img: '/static/team/jg.jpg', headline: 'Full Stack Developer', socialLinks: [
-              {url: 'https://twitter.com/javiergomezve', icon: 'fab fa-twitter-square'},
-              {url: 'https://www.linkedin.com/in/javiergomezve', icon: 'fab fa-linkedin'},
-              {url: 'https://github.com/javiergomezve', icon: 'fab fa-github'},
-            ]
-          }
         ]
       }
     },
@@ -120,9 +95,9 @@
         .then(axios.spread((cryptos, dollar) => {
           this.setData({currencies: cryptos.data, dollar: dollar.data})
         }))
-      
+
       refreshData()
-      
+
       setInterval(() => {
         refreshData()
       }, 180000)
@@ -146,7 +121,7 @@
 
   const getCryptoCurrenciesValues = () => axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,DGB,SC,ETH,LTC,DASH,XRP&tsyms=USD')
   const getDollarValue = () => axios.get('https://s3.amazonaws.com/dolartoday/data.json')
-  
+
 </script>
 
 <style scoped>
