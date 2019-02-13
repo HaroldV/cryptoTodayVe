@@ -1,2 +1,4 @@
 # CryptoTodayVe
-Plataforma Informativa sobre las criptomonedas que mas se utilizan en Venezuela
+- PWA Informativa sobre algunas criptomonedas en BsS (Bolivares Soberanos)
+
+![Alt text](/screenshot/app.png?raw=true "CryptoTodayVe")
