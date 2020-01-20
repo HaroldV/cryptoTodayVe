@@ -7,7 +7,10 @@
 
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                 <a href="#currencies" class="mdl-layout__tab is-active">
-                    <i class="fas fa-star fa-2x"></i>
+                    <i class="fas fa-align-justify fa-2x"></i>
+                </a>
+                <a href="#add-notification" class="mdl-layout__tab">
+                    <i class="far fa-comment-dots fa-2x"></i>
                 </a>
             </div>
         </header>
@@ -22,18 +25,22 @@
                     </div>
                 </div>
             </section>
+            <section class="mdl-layout__tab-panel is-active" id="add-notification">
+              <add-notification></add-notification>
+            </section>
         </main>
     </div>
 </template>
 
 <script>
   import CryptoCurrencyList from '@/components/CryptoCurrencyList'
+  import AddNotification from '@/components/AddNotification'
   import Previous from '@/components/Previous'
   import axios from 'axios'
 
   export default {
     name: 'app',
-    components: { CryptoCurrencyList, Previous },
+    components: { CryptoCurrencyList, Previous, AddNotification},
 
     data () {
       return {
