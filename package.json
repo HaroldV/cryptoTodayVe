@@ -21,7 +21,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "body-parser": "^1.18.3",
     "firebase": "^7.7.0",
     "firebase-admin": "^8.9.1",
