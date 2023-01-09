@@ -24,7 +24,7 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "firebase": "^7.7.0",
-    "firebase-admin": "^8.9.1",
+    "firebase-admin": "^11.4.1",
     "moment": "^2.22.2",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
